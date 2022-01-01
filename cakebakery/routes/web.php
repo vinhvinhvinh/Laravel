@@ -41,4 +41,6 @@ Route::get('dashboard', function () {
 Route::get('dashboard/product', function () {
     return view('admin/product');
 });
-
+Route::get('login', function () {
+    return view('auth/login');
+});
