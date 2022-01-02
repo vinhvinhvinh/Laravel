@@ -34,6 +34,12 @@
 
     <!-- Main CSS-->
     <link href="{{asset('admin/css/theme.css')}}" rel="stylesheet" media="all">
+    <style>
+       .table-earning tbody td{
+           padding:10px 10px;
+           white-space: pre-wrap;
+       }
+    </style>
 
 </head>
 
