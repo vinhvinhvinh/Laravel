@@ -46,15 +46,12 @@ Route::get('login', function () {
 	return view('auth/login');
 });
 
-<<<<<<< HEAD
-
 Route::group(['prefix' => 'product'], function () {
 	Route::get('/', [ProductController::class, 'product'])->name('admin.products.index');
 	Route::get('/create', [ProductController::class, 'create'])->name('admin.products.create');
+	Route::post('/create', [ProductController::class, 'addProduct'])->name('admin.products.addProduct');
 	Route::post('/store', [ProductController::class, 'store'])->name('admin.products.store');
-	Route::get('/{id}/edit', [ProductController::class, 'edit'])->name('admin.products.edit');
+	Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('admin.products.edit');
 	Route::post('/update', [ProductController::class, 'update'])->name('admin.products.update');
 	Route::get('/delete/{id}', [ProductController::class, 'delete'])->name('admin.products.delete');
 });
-=======
->>>>>>> 58e42c33d651253b7a1a5e1c3ca0f4034e7eb541
