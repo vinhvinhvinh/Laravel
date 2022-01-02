@@ -40,7 +40,7 @@ Route::get('dashboard', function () {
 	return view('admin/index');
 });
 Route::get('dashboard/product', function () {
-	return view('admin/product');
+	return view('admin/products/product');
 });
 Route::get('login', function () {
 	return view('auth/login');
