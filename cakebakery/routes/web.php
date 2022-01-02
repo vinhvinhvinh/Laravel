@@ -44,3 +44,4 @@ Route::get('dashboard/product', function () {
 Route::get('login', function () {
     return view('auth/login');
 });
+
