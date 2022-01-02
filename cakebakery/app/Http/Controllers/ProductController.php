@@ -15,8 +15,9 @@ class ProductController extends Controller
         $product = Product::all();
         $productCount = Product::all()->count();
         //dd($product);
-        return view('admin.product', compact('product', 'productCount'));
+        return view('admin.products.product', compact('product', 'productCount'));
     }
+
 
     public function delete($id)
     {

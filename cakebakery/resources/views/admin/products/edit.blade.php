@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'Bánh')
+@section('title', 'Sửa bánh')
 
 @section('content')
 <div class="col-lg-9" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;padding-top:100px;padding-left:350px;">
