@@ -46,6 +46,7 @@ Route::get('login', function () {
 	return view('auth/login');
 });
 
+<<<<<<< HEAD
 
 Route::group(['prefix' => 'product'], function () {
 	Route::get('/', [ProductController::class, 'product'])->name('admin.products.index');
@@ -55,3 +56,5 @@ Route::group(['prefix' => 'product'], function () {
 	Route::post('/update', [ProductController::class, 'update'])->name('admin.products.update');
 	Route::get('/delete/{id}', [ProductController::class, 'delete'])->name('admin.products.delete');
 });
+=======
+>>>>>>> 58e42c33d651253b7a1a5e1c3ca0f4034e7eb541
