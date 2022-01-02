@@ -43,9 +43,9 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="inbox.html">
-                            <i class="fas fa-chart-bar"></i>Inbox</a>
-                        <span class="inbox-num">3</span>
+                        <a href="{{route('admin.products.index')}}">
+                            <i class="fas fa-birthday-cake"></i>Bánh</a>
+                    
                     </li>
                     <li>
                         <a href="#">

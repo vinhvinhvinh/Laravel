@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('tenbanh');
             $table->string('mota');
             $table->integer('giaban');
+            $table->string('hinhanh');
             $table->integer('tinhtrang');
             $table->timestamps();
         });
