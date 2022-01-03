@@ -14,5 +14,8 @@ class Account extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
-    protected $table = 'products';
+    protected $table = 'accounts';
+    protected $fillable = [
+         'tenkh', 'username', 'password','diachi','email','hinhanh','loaitk','trangthai',
+    ];
 }
