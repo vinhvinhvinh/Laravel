@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AuthenticationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,9 +17,9 @@ use App\Http\Controllers\AccountController;
 |
 */
 
-Route::get('/', function () {
-	return view('welcome');
-});
+// Route::get('/', function () {
+// 	return view('welcome');
+// });
 Route::get('index', function () {
 	return view('index');
 });
@@ -48,8 +49,16 @@ Route::get('login', function () {
 	return view('auth/login');
 });
 
+####################### ----- Đăng nhập/ Đăng xuất
+#Login Route
+Route::get('/', [AuthenticationController::class, 'loginForm'])->name('login');
+# Xử lý Login
+Route::post('/login', [AuthenticationController::class, 'login'])->name('auth.login');
+Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
+####################### ----- Đăng nhập/ Đăng xuất
+
 Route::group(['prefix' => 'product'], function () {
-	Route::get('/', [ProductController::class, 'product'])->name('admin.products.index');
+	Route::get('/', [ProductController::class, 'product'])->name('admin.products.index')->middleware('auth');
 	Route::get('/create', [ProductController::class, 'create'])->name('admin.products.create');
 	Route::post('/create', [ProductController::class, 'addProduct'])->name('admin.products.addProduct');
 	Route::post('/store', [ProductController::class, 'store'])->name('admin.products.store');
@@ -59,7 +68,7 @@ Route::group(['prefix' => 'product'], function () {
 });
 
 Route::group(['prefix' => 'invoice'], function () {
-	Route::get('/', [InvoiceController::class, 'invoice'])->name('admin.invoices.index');
+	Route::get('/', [InvoiceController::class, 'invoice'])->name('admin.invoices.index')->middleware('auth');
 	Route::get('/create', [InvoiceController::class, 'create'])->name('admin.invoices.create');
 	Route::post('/create', [InvoiceController::class, 'addInvoice'])->name('admin.invoices.addInvoice');
 	Route::post('/store', [InvoiceController::class, 'store'])->name('admin.invoices.store');
@@ -68,7 +77,7 @@ Route::group(['prefix' => 'invoice'], function () {
 	Route::get('/delete/{id}', [InvoiceController::class, 'delete'])->name('admin.invoices.delete');
 });
 Route::group(['prefix' => 'employee'], function () {
-	Route::get('/', [EmployeeController::class, 'employee'])->name('admin.employees.index');
+	Route::get('/', [EmployeeController::class, 'employee'])->name('admin.employees.index')->middleware('auth');
 	Route::get('/create', [EmployeeController::class, 'create'])->name('admin.employees.create');
 	Route::post('/create', [EmployeeController::class, 'addEmployee'])->name('admin.employees.addEmployee');
 	Route::post('/store', [EmployeeController::class, 'store'])->name('admin.employees.store');
