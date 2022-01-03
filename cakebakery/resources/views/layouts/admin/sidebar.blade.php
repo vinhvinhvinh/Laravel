@@ -18,25 +18,30 @@
             </div>
             <nav class="navbar-sidebar2">
                 <ul class="list-unstyled navbar__list">
-                    
+
                     <li class="active">
                         <a href="{{route('admin.products.index')}}">
                             <i class="fas fa-birthday-cake"></i>Bánh</a>
-                    
+
+                    </li>
+                    <li>
+                        <a href="{{route('admin.accounts.index')}}">
+                            <i class="fas fa-file-alt"></i>Tài khoản</a>
+
                     </li>
                     <li>
                         <a href="{{route('admin.employees.index')}}">
                             <i class="fas fa-users"></i>Nhân viên</a>
-                    
+
                     </li>
                     <li>
                         <a href="{{route('admin.invoices.index')}}">
                             <i class="fas fa-file-alt"></i>Hóa đơn</a>
-                    
+
                     </li>
-                    
-                    
-                    
+
+
+
                 </ul>
             </nav>
         </div>

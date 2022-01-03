@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Account;
+use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller
 {
@@ -46,7 +47,7 @@ class AccountController extends Controller
         $account->id = $request->id;
         $account->tenkh = $request->tenkh;
         $account->username = $request->username;
-        $account->password = $request->password;
+        $account->password = Hash::make($request->password);
         $nameImg = $request->file('hinhanh')->getClientOriginalName();
         $account->hinhanh = $nameImg;
         $request->hinhanh->storeAs('admin/images', $nameImg);
