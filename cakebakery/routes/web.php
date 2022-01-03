@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthenticationController;
 /*
 |--------------------------------------------------------------------------
@@ -83,4 +84,13 @@ Route::group(['prefix' => 'employee'], function () {
 	Route::get('/edit/{id}', [EmployeeController::class, 'edit'])->name('admin.employees.edit');
 	Route::post('/update', [EmployeeController::class, 'update'])->name('admin.employees.update');
 	Route::get('/delete/{id}', [EmployeeController::class, 'delete'])->name('admin.employees.delete');
+});
+Route::group(['prefix' => 'account'], function () {
+	Route::get('/', [AccountController::class, 'account'])->name('admin.accounts.index');
+	Route::get('/create', [AccountController::class, 'create'])->name('admin.accounts.create');
+	Route::post('/create', [AccountController::class, 'addAccount'])->name('admin.accounts.addAccount');
+	Route::post('/store', [AccountController::class, 'store'])->name('admin.accounts.store');
+	Route::get('/edit/{id}', [AccountController::class, 'edit'])->name('admin.accounts.edit');
+	Route::post('/update', [AccountController::class, 'update'])->name('admin.accounts.update');
+	Route::get('/delete/{id}', [AccountController::class, 'delete'])->name('admin.accounts.delete');
 });
