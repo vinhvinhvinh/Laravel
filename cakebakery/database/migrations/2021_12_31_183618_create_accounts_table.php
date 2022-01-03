@@ -20,6 +20,7 @@ class CreateAccountsTable extends Migration
             $table->string('password');
             $table->string('diachi');
             $table->string('email');
+            $table->string('hinhanh');
             $table->integer('loaitk');
             $table->integer('trangthai');
             $table->timestamps();
