@@ -55,6 +55,11 @@ Route::get('/', [AuthenticationController::class, 'loginForm'])->name('login');
 # Xử lý Login
 Route::post('/login', [AuthenticationController::class, 'login'])->name('auth.login');
 Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
+
+
+Route::get('/signup', [AuthenticationController::class, 'signupForm'])->name('signup');
+Route::post('/signup', [AuthenticationController::class, 'signup'])->name('auth.signup');
+
 ####################### ----- Đăng nhập/ Đăng xuất
 
 Route::group(['prefix' => 'product'], function () {
