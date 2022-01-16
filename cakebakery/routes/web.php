@@ -6,6 +6,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthenticationController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,11 +60,12 @@ Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout
 
 Route::get('/signup', [AuthenticationController::class, 'signupForm'])->name('signup');
 Route::post('/signup', [AuthenticationController::class, 'signup'])->name('auth.signup');
-
+Route::get('/dashboard', [ProductController::class, 'dashboard']);
 ####################### ----- Đăng nhập/ Đăng xuất
 
 Route::group(['prefix' => 'product'], function () {
 	Route::get('/', [ProductController::class, 'product'])->name('admin.products.index')->middleware('auth');
+    Route::get('/account/all', [InvoiceController::class, 'khachHangTiemNang']);
 	Route::get('/create', [ProductController::class, 'create'])->name('admin.products.create');
 	Route::post('/create', [ProductController::class, 'addProduct'])->name('admin.products.addProduct');
 	Route::post('/store', [ProductController::class, 'store'])->name('admin.products.store');
@@ -78,6 +80,7 @@ Route::group(['prefix' => 'invoice'], function () {
 	Route::post('/create', [InvoiceController::class, 'addInvoice'])->name('admin.invoices.addInvoice');
 	Route::post('/store', [InvoiceController::class, 'store'])->name('admin.invoices.store');
 	Route::get('/edit/{id}', [InvoiceController::class, 'edit'])->name('admin.invoices.edit');
+    Route::get('/detail/{id}', [InvoiceController::class, 'findInvoiceDetailByInvoiceId'])->name('admin.invoices.detail');
 	Route::post('/update', [InvoiceController::class, 'update'])->name('admin.invoices.update');
 	Route::get('/delete/{id}', [InvoiceController::class, 'delete'])->name('admin.invoices.delete');
 });
