@@ -5,6 +5,14 @@
 <div class="main-content" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;padding-top:100px;padding-left:280px;">
     <div class="btn-group" style="padding-left:50px; margin-bottom:10px">
     </div>
+    <div class="btn-group" style="padding-left:50px; margin-bottom:10px">
+        @foreach ($hoaDon as $value)
+
+        <h2>Tổng tiền:{{$value->tongtien}} đ</h2>
+        @endforeach
+
+
+    </div>
     <div class="section__content section__content--p30">
         <div class="container-fluid">
 

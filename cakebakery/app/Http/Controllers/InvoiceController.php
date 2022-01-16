@@ -79,8 +79,9 @@ class InvoiceController extends Controller
     }
 
     public function findInvoiceDetailByInvoiceId($mahd){
-        //$invDetails=InvoiceDetail::where('mahd',$mahd)->get();
+        $hoaDon=Invoice::where('id',$mahd)->get();
+
         $invDetails=DB::table('invoice_details')->where('mahd',$mahd)->get();
-        return view('admin.invoices.invoicedetail', compact('invDetails'));
+        return view('admin.invoices.invoicedetail', compact('invDetails','hoaDon'));
     }
 }
