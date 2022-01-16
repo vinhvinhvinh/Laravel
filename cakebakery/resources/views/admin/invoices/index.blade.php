@@ -39,10 +39,10 @@
                                     <td class="text-right">{{$value->tongtien}}</td>
                                     <td >
                                         <div class="table-data-feature">
-                                            {{-- <a style="display:contents" href="{{route('admin.invoices.edit',['id'=>$value->id])}}">
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <a style="display:contents" href="{{route('admin.invoices.detail',['id'=>$value->id])}}">
+                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Detail">
                                                 <i class="fas fa-pencil-alt"></i>
-                                            </button> --}}
+                                            </button>
                                             </a>
                                             <a style="display:contents" href="{{route('admin.invoices.delete',['id'=>$value->id])}}">
                                             <button class="item" data-toggle="tooltip"  data-placement="top" title="Delete">
