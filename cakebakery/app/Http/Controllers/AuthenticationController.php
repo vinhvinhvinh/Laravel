@@ -78,7 +78,7 @@ class AuthenticationController extends Controller
             $request->hinhanh->storeAs('admin/images', $nameImg);
             $account->diachi = $request->diachi;
             $account->email = $request->email;
-            $account->loaitk = -1;
+            $account->loaitk = 1;
             $account->trangthai = 1;
             $account->save();
             return redirect()->route('auth.login');
