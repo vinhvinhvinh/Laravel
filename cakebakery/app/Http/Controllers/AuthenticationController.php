@@ -28,7 +28,7 @@ class AuthenticationController extends Controller
 
 
             if ($user->loaitk == -1) {
-                return redirect()->route('admin.products.index')->with('nameOfUser', $nameOfUser)->with('imgOfUser', $imgOfUser);
+                return redirect()->route('admin.dashboard')->with('nameOfUser', $nameOfUser)->with('imgOfUser', $imgOfUser);
             } else {
                 echo 'Trang chủ người dùng';
             }
@@ -78,9 +78,11 @@ class AuthenticationController extends Controller
             $request->hinhanh->storeAs('admin/images', $nameImg);
             $account->diachi = $request->diachi;
             $account->email = $request->email;
-            $account->loaitk = -1;
+            $account->loaitk = 1;
             $account->trangthai = 1;
             $account->save();
+
+
             return redirect()->route('auth.login');
         }
         return back()->with('error', 'Email đã đăng kí');
