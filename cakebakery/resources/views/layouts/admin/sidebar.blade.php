@@ -39,6 +39,11 @@
                             <i class="fas fa-file-alt"></i>Hóa đơn</a>
 
                     </li>
+                    <li>
+                        <a href="{{route('admin.menus.index')}}">
+                            <i class="fas fa-file-alt"></i>Thực đơn</a>
+
+                    </li>
 
 
 

@@ -130,13 +130,13 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <h2 class="title-1 m-b-25">KHÁCH HÀNG TIỀM NĂNG</h2>
+                        <h2  class="title-1 m-b-25">KHÁCH HÀNG TIỀM NĂNG</h2>
                         <div class="au-card au-card--bg-blue au-card-top-countries m-b-40" >
                             <div class="au-card-inner">
                                 <div class="table-responsive" >
                                     <table class="table table-top-countries" >
                                         <thead >
-                                            <tr>
+                                            <tr style="color:#fff;">
                                                 <th>Tên khách hàng</th>
                                                 <th>Tổng số hóa đơn</th>
 
