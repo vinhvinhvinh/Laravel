@@ -105,7 +105,7 @@ class ProductController extends Controller
         from invoice_details, invoices
         WHERE invoice_details.mahd=invoices.id and ngaylaphd=DATE(NOW()) and MONTH(ngaylaphd)=MONTH(NOW()) and YEAR(ngaylaphd)=YEAR(NOW())
         ');
-
+        //dd($soBanhTieuThuTrongNgay);
         //Số hóa đơn bán trong ngày
         $soHoaDonBanTrongNgay=DB::select('select COUNT(invoices.id) as tong_hoa_don
         from invoices
@@ -126,7 +126,6 @@ class ProductController extends Controller
         $doanhThuThang=DB::select('select SUM(invoices.tongtien) as doanh_thu_thang
         from invoices
         WHERE MONTH(ngaylaphd)=MONTH(NOW()) and YEAR(ngaylaphd)=YEAR(NOW())');
-
          return view('admin.index',compact('prods','accs','doanhThuNgay','doanhThuThang','soBanhTieuThuTrongNgay','soHoaDonBanTrongNgay'));
     }
 }

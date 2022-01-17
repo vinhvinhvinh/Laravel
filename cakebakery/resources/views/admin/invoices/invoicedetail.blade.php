@@ -5,14 +5,22 @@
 <div class="main-content" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;padding-top:100px;padding-left:280px;">
     <div class="btn-group" style="padding-left:50px; margin-bottom:10px">
     </div>
+
     <div class="btn-group" style="padding-left:50px; margin-bottom:10px">
-        @foreach ($hoaDon as $value)
 
-        <h2>Tổng tiền:{{$value->tongtien}} đ</h2>
-        @endforeach
-
-
+        <h3>Khách hàng: {{$hoaDon->tenkh}}</h2>
     </div>
+    <br>
+    <div class="btn-group" style="padding-left:105px; margin-bottom:10px;">
+
+        <h3>Ngày lập: {{$hoaDon->ngaylaphd}}</h2>
+    </div>
+    <br>
+    <div class="btn-group" style="padding-left:105px; margin-bottom:10px">
+
+        <h3>Tổng tiền: {{$hoaDon->tongtien}} đ</h2>
+    </div>
+
     <div class="section__content section__content--p30">
         <div class="container-fluid">
 
@@ -35,7 +43,7 @@
                                 <tr>
 
                                     <td class="text-center"><span>{{$value->id}}</span></td>
-                                    <td>{{$value->mabanh}}</td>
+                                    <td>{{$value->tenbanh}}</td>
                                     <td class="text-center">{{$value->soluong}}</td>
                                     <td class="text-center">{{$value->dongia}}</td>
 
