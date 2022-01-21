@@ -23,9 +23,9 @@ use App\Http\Controllers\AuthenticationController;
 // Route::get('/', function () {
 // 	return view('welcome');
 // });
-Route::get('index', function () {
-	return view('index');
-});
+
+Route::get('/index', [ProductController::class,'home']) ->name('index');
+Route::get('/product/{id}', [ProductController::class,'productDetail']) ->name('productDetail');
 Route::get('search', function () {
 	return view('search');
 });
@@ -38,9 +38,7 @@ Route::get('cart', function () {
 Route::get('checkout', function () {
 	return view('checkout');
 });
-Route::get('product/detail', function () {
-	return view('productdetail');
-});
+
 
 Route::get('dashboard', function () {
 	return view('admin/index');
@@ -67,7 +65,7 @@ Route::get('/dashboard', [ProductController::class, 'dashboard'])->name('admin.d
 
 Route::group(['prefix' => 'product', 'middleware' => ['auth']], function () {
 	Route::get('/', [ProductController::class, 'product'])->name('admin.products.index');
-	//Route::get('/account/all', [InvoiceController::class, 'khachHangTiemNang']);
+
 	Route::get('/create', [ProductController::class, 'create'])->name('admin.products.create');
 	Route::post('/create', [ProductController::class, 'addProduct'])->name('admin.products.addProduct');
 	Route::post('/store', [ProductController::class, 'store'])->name('admin.products.store');
