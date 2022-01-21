@@ -164,106 +164,24 @@
             <section class="welcome_bakery_area cake_feature_main p_100">
                 <div class="container">
                     <div class="main_title">
-                        <h2>Our Featured Cakes</h2>
-                        <h5> Seldolor sit amet consect etur</h5>
+                        <h2>Sản phẩm mới</h2>
+                        <h5> Một chiếc bánh, một trải nghiệm</h5>
                     </div>
                     <div class="cake_feature_row row">
+                        @foreach ($lstProductInDay as $item)
                         <div class="col-lg-3 col-md-4 col-6">
                             <div class="cake_feature_item">
                                 <div class="cake_img">
-                                    <img src="{{asset('img/cake-feature/c-feature-1.jpg')}}" alt="">
+                                    <img src="{{asset('img/cake-feature/'.$item->hinhanh)}}" alt="{{$item->id}}">
                                 </div>
                                 <div class="cake_text">
-                                    <h4>$29</h4>
-                                    <h3>Strawberry Cupcakes</h3>
+                                    <h4>{{$item->giaban}}</h4>
+                                    <a href="{{route('productDetail',['id'=>$item->id])}}"><h3>{{$item->tenbanh}}</h3></a>
                                     <a class="pest_btn" href="#">Add to cart</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-6">
-                            <div class="cake_feature_item">
-                                <div class="cake_img">
-                                    <img src="{{asset('img/cake-feature/c-feature-2.jpg')}}" alt="">
-                                </div>
-                                <div class="cake_text">
-                                    <h4>$29</h4>
-                                    <h3>Strawberry Cupcakes</h3>
-                                    <a class="pest_btn" href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-6">
-                            <div class="cake_feature_item">
-                                <div class="cake_img">
-                                    <img src="{{asset('img/cake-feature/c-feature-3.jpg')}}" alt="">
-                                </div>
-                                <div class="cake_text">
-                                    <h4>$29</h4>
-                                    <h3>Strawberry Cupcakes</h3>
-                                    <a class="pest_btn" href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-6">
-                            <div class="cake_feature_item">
-                                <div class="cake_img">
-                                    <img src="{{asset('img/cake-feature/c-feature-4.jpg')}}" alt="">
-                                </div>
-                                <div class="cake_text">
-                                    <h4>$29</h4>
-                                    <h3>Strawberry Cupcakes</h3>
-                                    <a class="pest_btn" href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-6">
-                            <div class="cake_feature_item">
-                                <div class="cake_img">
-                                    <img src="{{asset('img/cake-feature/c-feature-1.jpg')}}" alt="">
-                                </div>
-                                <div class="cake_text">
-                                    <h4>$29</h4>
-                                    <h3>Strawberry Cupcakes</h3>
-                                    <a class="pest_btn" href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-6">
-                            <div class="cake_feature_item">
-                                <div class="cake_img">
-                                    <img src="{{asset('img/cake-feature/c-feature-2.jpg')}}" alt="">
-                                </div>
-                                <div class="cake_text">
-                                    <h4>$29</h4>
-                                    <h3>Strawberry Cupcakes</h3>
-                                    <a class="pest_btn" href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-6">
-                            <div class="cake_feature_item">
-                                <div class="cake_img">
-                                    <img src="{{asset('img/cake-feature/c-feature-3.jpg')}}" alt="">
-                                </div>
-                                <div class="cake_text">
-                                    <h4>$29</h4>
-                                    <h3>Strawberry Cupcakes</h3>
-                                    <a class="pest_btn" href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-6">
-                            <div class="cake_feature_item">
-                                <div class="cake_img">
-                                    <img src="{{asset('img/cake-feature/c-feature-4.jpg')}}" alt="">
-                                </div>
-                                <div class="cake_text">
-                                    <h4>$29</h4>
-                                    <h3>Strawberry Cupcakes</h3>
-                                    <a class="pest_btn" href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </section>
@@ -359,62 +277,39 @@
             </section>
             <!--================End Service We offer Area =================-->
 
-            <!--================Discover Menu Area =================-->
-            <section class="discover_menu_area menu_d_two">
-                <div class="discover_menu_inner">
-                    <div class="container">
-                        <div class="single_pest_title">
-                            <h2>Services We offer</h2>
-                        </div>
-                           <div class="row">
-                               <div class="col-lg-6">
-                                   <div class="discover_item_inner">
-                                       <div class="discover_item">
-                                        <h4>Double Chocolate Pie</h4>
-                                        <p>Chocolate puding, vanilla, fruite rasberry jam milk <span>$8.99</span></p>
-                                    </div>
-                                       <div class="discover_item">
-                                        <h4>Double Chocolate Pie</h4>
-                                        <p>Chocolate puding, vanilla, fruite rasberry jam milk <span>$8.99</span></p>
-                                    </div>
-                                       <div class="discover_item">
-                                        <h4>Double Chocolate Pie</h4>
-                                        <p>Chocolate puding, vanilla, fruite rasberry jam milk <span>$8.99</span></p>
-                                    </div>
-                                       <div class="discover_item">
-                                        <h4>Double Chocolate Pie</h4>
-                                        <p>Chocolate puding, vanilla, fruite rasberry jam milk <span>$8.99</span></p>
-                                    </div>
-                                   </div>
-                               </div>
-                               <div class="col-lg-6">
-                                   <div class="discover_item_inner">
-                                       <div class="discover_item">
-                                        <h4>Double Chocolate Pie</h4>
-                                        <p>Chocolate puding, vanilla, fruite rasberry jam milk <span>$8.99</span></p>
-                                    </div>
-                                       <div class="discover_item">
-                                        <h4>Double Chocolate Pie</h4>
-                                        <p>Chocolate puding, vanilla, fruite rasberry jam milk <span>$8.99</span></p>
-                                    </div>
-                                       <div class="discover_item">
-                                        <h4>Double Chocolate Pie</h4>
-                                        <p>Chocolate puding, vanilla, fruite rasberry jam milk <span>$8.99</span></p>
-                                    </div>
-                                       <div class="discover_item">
-                                        <h4>Double Chocolate Pie</h4>
-                                        <p>Chocolate puding, vanilla, fruite rasberry jam milk <span>$8.99</span></p>
-                                    </div>
-                                   </div>
-                               </div>
-                               <div class="col-lg-12">
-                                   <a class="pest_btn" href="#">View Full Menu</a>
-                               </div>
-                           </div>
+           <!--================Discover Menu Area =================-->
+<section class="discover_menu_area menu_d_two">
+    <div class="discover_menu_inner">
+        <div class="container">
+            <div class="single_pest_title">
+                <h2>Thực đơn ngày hôm nay</h2>
+            </div>
+            <div class="row" style="padding-left: 350px">
+                <div class="col-lg-10">
+                    <div class="discover_item_inner">
+                        @foreach ($lstMenus as $menu)
+
+                            <div class="discover_item">
+                                <a href="#">
+                                    <h4>{{$menu->tenbanh}} </h4>
+                                </a>
+                                <p>Gía: <span>{{$menu->giaban}}</span></p>
+                                <p>Số lượng còn lại: <span>{{$menu->soluong}}</span></p>
+
+                            </div>
+
+                        @endforeach
                     </div>
                 </div>
-            </section>
-            <!--================End Discover Menu Area =================-->
+
+                <div class="col-lg-8" style="text-align:center;">
+                    <a class="pest_btn" asp-controller="Menus" asp-action="Show">Xem thực đơn đầy đủ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Discover Menu Area =================-->
 
             <!--================End Client Says Area =================-->
             <section class="our_chef_area p_100">
@@ -482,73 +377,44 @@
             <section class="new_arivals_area p_100">
                 <div class="container">
                     <div class="single_pest_title">
-                        <h2>New Arrivals</h2>
+                        <h2>Sản phẩm bán chạy</h2>
                     </div>
                     <div class="row arivals_inner">
+                        @foreach ($bestSelling as $value)
                         <div class="col-lg-6 col-sm-7">
                             <div class="arivals_chocolate">
                                 <div class="arivals_pic">
-                                    <img class="img-fluid" src="{{asset('img/cake-feature/arivals-pic.j')}}pg" alt="">
+                                    <img class="img-fluid" src="{{asset('img/cake-feature/'.$value->hinhanh)}}" alt="{{$value->id}}">
                                     <div class="price_text">
-                                        <h5>$39</h5>
+                                        <h5>{{$value->so_luong_ban_ra}}</h5>
                                     </div>
                                 </div>
                                 <div class="arivals_text">
-                                    <h4>Chocolate <span>Crumble</span></h4>
-                                    <a href="#">Mine cup</a>
+                                    <h4><a href="{{route('productDetail',['id'=>$value->id])}}">{{$value->tenbanh}} </a></h4>
+                                    <a href="#">Add to cart</a>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
+
                         <div class="col-lg-6">
                             <div class="arivals_slider owl-carousel">
+                                @foreach ($lstBestSelling as $item)
                                 <div class="item">
                                     <div class="cake_feature_item">
                                         <div class="cake_img">
-                                            <img src="{{asset('img/cake-feature/arivals-1.jpg')}}" alt="">
+                                            <img src="{{asset('img/cake-feature/'.$item->hinhanh)}}" alt="{{$item->id}}">
                                         </div>
                                         <div class="cake_text">
-                                            <h4>$29</h4>
-                                            <h3>Strawberry Cupcakes</h3>
+                                            <h4>{{$item->giaban}}</h4>
+                                            <a href="{{route('productDetail',['id'=>$item->id])}}"><h3>{{$item->tenbanh}}</h3></a>
                                             <a class="pest_btn" href="#">Add to cart</a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <div class="cake_feature_item">
-                                        <div class="cake_img">
-                                            <img src="{{asset('img/cake-feature/arivals-2.jpg')}}" alt="">
-                                        </div>
-                                        <div class="cake_text">
-                                            <h4>$29</h4>
-                                            <h3>Chocolate Cupcakes</h3>
-                                            <a class="pest_btn" href="#">Add to cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="cake_feature_item">
-                                        <div class="cake_img">
-                                            <img src="{{asset('img/cake-feature/arivals-1.jpg')}}" alt="">
-                                        </div>
-                                        <div class="cake_text">
-                                            <h4>$29</h4>
-                                            <h3>Strawberry Cupcakes</h3>
-                                            <a class="pest_btn" href="#">Add to cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="cake_feature_item">
-                                        <div class="cake_img">
-                                            <img src="{{asset('img/cake-feature/arivals-2.jpg')}}" alt="">
-                                        </div>
-                                        <div class="cake_text">
-                                            <h4>$29</h4>
-                                            <h3>Chocolate Cupcakes</h3>
-                                            <a class="pest_btn" href="#">Add to cart</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+
+
                             </div>
                         </div>
                     </div>

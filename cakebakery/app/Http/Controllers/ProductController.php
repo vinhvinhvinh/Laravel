@@ -131,4 +131,49 @@ class ProductController extends Controller
         WHERE MONTH(ngaylaphd)=MONTH(NOW()) and YEAR(ngaylaphd)=YEAR(NOW())');
         return view('admin.index', compact('prods', 'accs', 'doanhThuNgay', 'doanhThuThang', 'soBanhTieuThuTrongNgay', 'soHoaDonBanTrongNgay'));
     }
+
+    public function home()
+    {
+
+        //Danh sách bánh trong ngày
+        $lstProductInDay = DB::select('select products.*
+        from products, menu_details, menus
+        WHERE products.id=menu_details.mabanh and menu_details.mamenu=menus.id and
+        DATE(menus.ngaylap)=DATE(NOW()) and MONTH(menus.ngaylap)=MONTH(NOW()) and YEAR(menus.ngaylap)=YEAR(NOW())');
+
+        //Bánh bán chạy nhất
+        $bestSelling = DB::select('select products.*, SUM(invoice_details.soluong) as so_luong_ban_ra
+        from products, invoice_details, menu_details, menus
+                where products.id=invoice_details.mabanh and products.id=menu_details.mabanh and menu_details.mamenu=menus.id and
+                DATE(menus.ngaylap)=DATE(NOW()) and MONTH(menus.ngaylap)=MONTH(NOW()) and YEAR(menus.ngaylap)=YEAR(NOW())
+                group by products.id
+                order by SUM(invoice_details.soluong) desc LIMIT 1');
+
+        //Danh sách bánh bán chạy nhất
+        $lstBestSelling=DB::select('select products.*, SUM(invoice_details.soluong) as so_luong_ban_ra
+        from products, invoice_details, menu_details, menus
+                where products.id=invoice_details.mabanh and products.id=menu_details.mabanh and menu_details.mamenu=menus.id and
+                DATE(menus.ngaylap)=DATE(NOW()) and MONTH(menus.ngaylap)=MONTH(NOW()) and YEAR(menus.ngaylap)=YEAR(NOW())
+                group by products.id
+                order by SUM(invoice_details.soluong) desc LIMIT 6');
+
+        //Load thực đơn
+        $lstMenus=DB::select('select products.*, menu_details.soluong
+        from products, menu_details, menus
+                where products.id=menu_details.mabanh and menu_details.mamenu=menus.id and
+                DATE(menus.ngaylap)=DATE(NOW()) and MONTH(menus.ngaylap)=MONTH(NOW()) and YEAR(menus.ngaylap)=YEAR(NOW())');
+
+        return view('index', compact('lstProductInDay','bestSelling','lstBestSelling','lstMenus'));
+    }
+
+    public function productDetail($id){
+        $product = Product::find($id);
+
+        $sanPhamLienQuan=DB::select('select products.*
+        from products, menu_details, menus
+        WHERE products.id=menu_details.mabanh and menu_details.mamenu=menus.id and
+        DATE(menus.ngaylap)=DATE(NOW()) and MONTH(menus.ngaylap)=MONTH(NOW()) and YEAR(menus.ngaylap)=YEAR(NOW()) LIMIT 4');
+
+        return view('productdetail', compact('product','sanPhamLienQuan'));
+    }
 }
