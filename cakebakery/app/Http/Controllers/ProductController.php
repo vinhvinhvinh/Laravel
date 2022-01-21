@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
@@ -15,6 +16,7 @@ class ProductController extends Controller
 
     public function product()
     {
+
         $product = Product::all();
         $productCount = Product::all()->count();
         //dd($product);
@@ -93,7 +95,8 @@ class ProductController extends Controller
 
         return redirect()->route('admin.products.index');
     }
-    public function dashboard(){
+    public function dashboard()
+    {
         //Sản phẩm bán chạy
         $prods =  DB::select('select products.*, SUM(invoice_details.soluong) as so_luong_ban_ra from products, invoice_details
         where products.id=invoice_details.mabanh
@@ -101,13 +104,13 @@ class ProductController extends Controller
         order by SUM(invoice_details.soluong) desc LIMIT 5');
 
         //Số bánh tiêu thụ được trong 1 ngày
-        $soBanhTieuThuTrongNgay=DB::select('select SUM(invoice_details.soluong) as tong_san_pham
+        $soBanhTieuThuTrongNgay = DB::select('select SUM(invoice_details.soluong) as tong_san_pham
         from invoice_details, invoices
         WHERE invoice_details.mahd=invoices.id and ngaylaphd=DATE(NOW()) and MONTH(ngaylaphd)=MONTH(NOW()) and YEAR(ngaylaphd)=YEAR(NOW())
         ');
         //dd($soBanhTieuThuTrongNgay);
         //Số hóa đơn bán trong ngày
-        $soHoaDonBanTrongNgay=DB::select('select COUNT(invoices.id) as tong_hoa_don
+        $soHoaDonBanTrongNgay = DB::select('select COUNT(invoices.id) as tong_hoa_don
         from invoices
         WHERE ngaylaphd=DATE(NOW()) and MONTH(ngaylaphd)=MONTH(NOW()) and YEAR(ngaylaphd)=YEAR(NOW())');
 
@@ -119,13 +122,13 @@ class ProductController extends Controller
 
 
         //Doanh thu trong ngay
-        $doanhThuNgay=DB::select('select SUM(invoices.tongtien) as doanh_thu_ngay
+        $doanhThuNgay = DB::select('select SUM(invoices.tongtien) as doanh_thu_ngay
                                 from invoices
                                 WHERE ngaylaphd=DATE(NOW()) and MONTH(ngaylaphd)=MONTH(NOW()) and YEAR(ngaylaphd)=YEAR(NOW())');
 
-        $doanhThuThang=DB::select('select SUM(invoices.tongtien) as doanh_thu_thang
+        $doanhThuThang = DB::select('select SUM(invoices.tongtien) as doanh_thu_thang
         from invoices
         WHERE MONTH(ngaylaphd)=MONTH(NOW()) and YEAR(ngaylaphd)=YEAR(NOW())');
-         return view('admin.index',compact('prods','accs','doanhThuNgay','doanhThuThang','soBanhTieuThuTrongNgay','soHoaDonBanTrongNgay'));
+        return view('admin.index', compact('prods', 'accs', 'doanhThuNgay', 'doanhThuThang', 'soBanhTieuThuTrongNgay', 'soHoaDonBanTrongNgay'));
     }
 }

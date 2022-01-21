@@ -4,8 +4,8 @@
 @section('content')
 <div class="main-content" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;padding-top:100px;padding-left:280px;">
     <div class="btn-group" style="padding-left:50px;">
-        <h2>Tổng thực đơn : </h2>
-        <a style="font-size:20px;color:white" href="{{route('admin.menudetails.create')}}"><div style="padding:10px;background-color:grey;border:solid 2px black">
+        <h2> </h2>
+        <a style="font-size:20px;color:white" href="{{route('admin.menudetails.create',['id'=>$recentMenu])}}"><div style="padding:10px;background-color:grey;border:solid 2px black">
             Thêm món  
         </div></a>
         
