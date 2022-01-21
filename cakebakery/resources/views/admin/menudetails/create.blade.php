@@ -10,29 +10,30 @@
                                             <h3 class="text-center title-2">Thêm chi tiết thực đơn</h3>
                                         </div>
                                         <hr>
-                                        <form action="{{route('admin.menus.addMenu')}}" method="post" novalidate="novalidate" enctype="multipart/form-data">
+                                        <form action="{{route('admin.menudetails.addMenuDetail')}}" method="post" novalidate="novalidate" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group">
-                                                <label>Id</label>
-                                                <input name="id" type="text" class="form-control" value="{{$finalId}}">
+                                                <label>Mã TD</label>
+                                                <input disabled type="text" class="form-control" value="{{$recentMenu}}">
+                                                <input name="mamenu" type="hidden" class="form-control" value="{{$recentMenu}}">
                                                 <h3></h3>
                                             </div>
+                                           
                                             <div class="form-group">
-                                                <label>Ngày lập</label>
-                                                <input  name="ngaylap" type="date" class="form-control cc-name valid" >
-                                                <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Nhân viên lập</label>
+                                                <label>Mã bánh</label>
                                                 {{-- <input name="nvlap" type="text" class="form-control" value={{$idNhanvien}}> --}}
-                                                <select name="nvlap">
-                                                    @foreach($employees as $e)
-                                                    <option value="{{$e->id}}">{{$e->id}}</option>
+                                                <select name="mabanh">
+                                                    @foreach($products as $p)
+                                                    <option value="{{$p->id}}">{{$p->id}}</option>
                                                     @endforeach
                                                 </select>
                                                 <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
                                             </div>
-                                           
+                                            <div class="form-group">
+                                                <label>Số lượng</label>
+                                                <input name="soluong" type="text" class="form-control" value="">
+                                                <h3></h3>
+                                            </div>
                                             
                                             <div>
                                                 <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">

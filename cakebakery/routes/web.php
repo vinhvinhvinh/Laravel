@@ -118,8 +118,8 @@ Route::group(['prefix' => 'menu', 'middleware' => ['auth']], function () {
 Route::group(['prefix' => 'menudetail', 'middleware' => ['auth']], function () {
 	//Route::get('/', [MenuDetailController::class, 'menudetail'])->name('admin.menudetails.index');
 	Route::get('/detail/{id}', [MenuDetailController::class, 'menudetail'])->name('admin.menudetails.index');
-	Route::get('/create', [MenuDetailController::class, 'create'])->name('admin.menudetails.create');
-	Route::post('/create', [MenuDetailController::class, 'addMenuDetail'])->name('admin.menudetails.addMenu');
+	Route::get('/create/{id}', [MenuDetailController::class, 'create'])->name('admin.menudetails.create');
+	Route::post('/create', [MenuDetailController::class, 'addMenuDetail'])->name('admin.menudetails.addMenuDetail');
 	Route::get('/edit/{id}', [MenuDetailController::class, 'edit'])->name('admin.menudetails.edit');
 	Route::post('/update', [MenuDetailController::class, 'update'])->name('admin.menudetails.update');
 	Route::get('/delete/{id}', [MenuDetailController::class, 'delete'])->name('admin.menudetails.delete');

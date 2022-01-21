@@ -18,8 +18,12 @@
             </div>
             <nav class="navbar-sidebar2">
                 <ul class="list-unstyled navbar__list">
-
                     <li class="active">
+                        <a href="{{route('admin.dashboard')}}">
+                            <i class="fas fa-birthday-cake"></i>Dashboard</a>
+
+                    </li>
+                    <li class="">
                         <a href="{{route('admin.products.index')}}">
                             <i class="fas fa-birthday-cake"></i>Bánh</a>
 

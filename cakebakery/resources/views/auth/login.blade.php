@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Đăng nhập')
 @section('content')
 <div class="page-wrapper">
     <div class="page-content--bge5">
