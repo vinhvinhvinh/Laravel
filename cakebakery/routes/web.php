@@ -38,7 +38,9 @@ Route::get('cart', function () {
 Route::get('checkout', function () {
 	return view('checkout');
 });
-
+Route::get('profile', function () {
+	return view('profile');
+});
 
 Route::get('dashboard', function () {
 	return view('admin/index');
@@ -61,6 +63,7 @@ Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout
 Route::get('/signup', [AuthenticationController::class, 'signupForm'])->name('signup');
 Route::post('/signup', [AuthenticationController::class, 'signup'])->name('auth.signup');
 Route::get('/dashboard', [ProductController::class, 'dashboard'])->name('admin.dashboard');
+
 ####################### ----- Đăng nhập/ Đăng xuất
 
 Route::group(['prefix' => 'product', 'middleware' => ['auth']], function () {
@@ -101,6 +104,11 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth']], function () {
 	Route::get('/edit/{id}', [AccountController::class, 'edit'])->name('admin.accounts.edit');
 	Route::post('/update', [AccountController::class, 'update'])->name('admin.accounts.update');
 	Route::get('/delete/{id}', [AccountController::class, 'delete'])->name('admin.accounts.delete');
+    Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
+	Route::post('/updateProfile', [AccountController::class, 'updateProfile'])->name('updateProfile');
+    Route::get('/profileAdmin', [AccountController::class, 'profileAdmin'])->name('profileAdmin');
+	Route::post('/updateProfileAdmin', [AccountController::class, 'updateProfile'])->name('updateProfileAdmin');
+    Route::get('/invoices/{mahd}', [AccountController::class, 'chiTietDonHang'])->name('detailinvoices');
 });
 
 Route::group(['prefix' => 'menu', 'middleware' => ['auth']], function () {

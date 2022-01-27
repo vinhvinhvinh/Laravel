@@ -30,7 +30,7 @@ class AuthenticationController extends Controller
             if ($user->loaitk == -1) {
                 return redirect()->route('admin.dashboard')->with('nameOfUser', $nameOfUser)->with('imgOfUser', $imgOfUser);
             } else {
-                echo 'Trang chủ người dùng';
+                return redirect()->route('index')->with('nameOfUser', $nameOfUser)->with('imgOfUser', $imgOfUser);
             }
         }
     }

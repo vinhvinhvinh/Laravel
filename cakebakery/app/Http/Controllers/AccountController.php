@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Account;
+use App\Models\Invoice;
+use App\Models\InvoiceDetail;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+
 
 class AccountController extends Controller
 {
@@ -68,27 +72,86 @@ class AccountController extends Controller
     function update(Request $request)
     {
         $account = Account::find($request->id);
+        $account->tenkh=$request->tenkh;
+        $account->diachi=$request->diachi;
+        //$account->password=$request->password;
+        $account->email=$request->email;
+
         if ($request->hasFile('hinhanh')) {
-            $newImg = $request->file('hinhanh')->getClientOriginalName();
-            $request->hinhanh->storeAs('admin/images', $newImg);
-            $recentImg = $newImg;
-        }
-        $recentPassword=Account::find($request->id)->password;
-        $recentUsername=Account::find($request->id)->username;
-        Account::where('id', $request->id)->update(
-            [
-                'id' => $request->id,
-                'tenkh' => $request->tenkh,
-                'username' => $recentUsername,
-                'hinhanh'=>  $recentImg,
-                'password' => $recentPassword,
-                'diachi' => $request->diachi,
-                'email' => $request->email,
-                'loaitk' => $request->loaitk,
-                'trangthai' => $request->trangthai,
-            ]
-        );
+                $newImg = $request->file('hinhanh')->getClientOriginalName();
+                $request->hinhanh->storeAs('admin/images', $newImg);
+                $account->hinhanh = $newImg;
+            }
+            else{
+                $account->hinhanh=$account->hinhanh;
+            }
+        $account->save();
 
         return redirect()->route('admin.accounts.index');
+        // if ($request->hasFile('hinhanh')) {
+        //     $newImg = $request->file('hinhanh')->getClientOriginalName();
+        //     $request->hinhanh->storeAs('admin/images', $newImg);
+        //     $recentImg = $newImg;
+        // }
+        // $recentPassword=Account::find($request->id)->password;
+        // $recentUsername=Account::find($request->id)->username;
+        // Account::where('id', $request->id)->update(
+        //     [
+        //         'id' => $request->id,
+        //         'tenkh' => $request->tenkh,
+        //         'username' => $recentUsername,
+        //         'hinhanh'=>  $recentImg,
+        //         'password' => $recentPassword,
+        //         'diachi' => $request->diachi,
+        //         'email' => $request->email,
+        //         'loaitk' => $request->loaitk,
+        //         'trangthai' => $request->trangthai,
+        //     ]
+        // );
+
     }
+
+  public function profile(Request $request)
+  {
+    $account = Account::find(Auth::user()->id);
+    $invs=Invoice::where('matk','=',Auth::user()->id)->take(5)->get();
+    return view('profile', compact('account','invs'));
+
+  }
+
+  public function updateProfile(Request $request){
+
+    $account=Account::where('id',Auth::user()->id)->first();
+    $account->tenkh=$request->tenkh;
+    $account->diachi=$request->diachi;
+    //$account->password=$request->password;
+    $account->email=$request->email;
+
+    if ($request->hasFile('hinhanh')) {
+            $newImg = $request->file('hinhanh')->getClientOriginalName();
+            $request->hinhanh->storeAs('admin/images', $newImg);
+            $account->hinhanh = $newImg;
+        }
+        else{
+            $account->hinhanh=$account->hinhanh;
+        }
+    $account->save();
+
+    return redirect()->back();
+  }
+
+  public function chiTietDonHang($mahd){
+    $account = Account::find(Auth::user()->id);
+    $inv= Invoice::where('id','=',$mahd)->first();
+    $detail=InvoiceDetail::join('products','invoice_details.mabanh','products.id')->where('mahd','=',$mahd)->get();
+
+    return view('detailinvoices', compact('account','detail','inv'));
+  }
+  public function profileAdmin(Request $request)
+  {
+    $account = Account::find(Auth::user()->id);
+    return view('admin.profile', compact('account'));
+
+  }
+
 }
