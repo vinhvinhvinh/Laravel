@@ -81,7 +81,7 @@ class CartController extends Controller
         $cart = Session::get('cart');
 
         //Thêm hóa đơn
-        $employee = 'EMPLOYEE20220116030135002';
+        $employee = 'EMPLOYEE20220103060123002';
         $datetime = Date('Ymdhms');
         $countAllInv = Invoice::all()->count() + 1;
         $chuoiID = $countAllInv;
@@ -102,7 +102,7 @@ class CartController extends Controller
         $inv->ngaylaphd = Date('Ymd');
         $inv->nvlap = $employee;
 
-        //Total 
+        //Total
         $totalCart = 0;
         foreach ($cart as $item) {
             $totalCart += $item['price'] * $item['quantity'];

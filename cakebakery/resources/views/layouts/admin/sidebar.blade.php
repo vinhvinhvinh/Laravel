@@ -9,7 +9,7 @@
         <div class="menu-sidebar2__content js-scrollbar1">
             <div class="account2">
                 <div class="image img-cir img-120">
-                    <img src="{{asset('admin/images/'.Session::get('userAvatar'))}}" alt="B.Tuyền" />
+                    <a href="{{route('profileAdmin')}}"><img src="{{asset('admin/images/'.Session::get('userAvatar'))}}" alt="B.Tuyền" /></a>
                 </div>
                 {{-- <h4 class="name">{{$nameOfUser}}</h4> --}}
                 <h4 class="name">{{Session::get('userFullname');}}</h4>

@@ -73,7 +73,7 @@
 						<ul class="h_search list_style">
 							<li class="shop_cart"><a href="#"><i class="lnr lnr-cart"></i></a></li>
 							<li><a class="popup-with-zoom-anim" href="#test-search"><i class="fa fa-search"></i></a></li>
-							<li class="logoutt"><h6 class="name">{{Session::get('userFullname');}}</h6></li>
+							<li class="logoutt"><h6 class="name"><a href="{{route('profile')}}">{{Session::get('userFullname');}}</a></h6></li>
 							<li class="logoutt-dropdown"><a href="{{route('logout')}}">Đăng xuất</a></li>
 						</ul>
 					</div>
@@ -95,9 +95,9 @@
 								<li class="dropdown submenu active">
 									<a class="dropdown-toggle"  href="{{route('index')}}" >Home</a>
 								</li>
-								
-								
-								
+
+
+
 								<li class="dropdown submenu">
 									<a class="dropdown-toggle"  href="{{route('home.cart')}}" role="button">Giỏ Hàng</a>
 								</li>
