@@ -2,7 +2,9 @@
 @section('title', 'Trang chủ')
 
 
+
 @section('content')
+            
 	        <!--================Slider Area =================-->
             <section class="main_slider_area">
                 <div id="main_slider" class="rev_slider" data-version="5.3.1.6">
@@ -172,12 +174,12 @@
                         <div class="col-lg-3 col-md-4 col-6">
                             <div class="cake_feature_item">
                                 <div class="cake_img">
-                                    <img src="{{asset('img/cake-feature/'.$item->hinhanh)}}" alt="{{$item->id}}">
+                                    <img width="270" height="226" src="{{asset('img/cake-feature/'.$item->hinhanh)}}" alt="{{$item->id}}">
                                 </div>
                                 <div class="cake_text">
                                     <h4>{{$item->giaban}}</h4>
                                     <a href="{{route('productDetail',['id'=>$item->id])}}"><h3>{{$item->tenbanh}}</h3></a>
-                                    <a class="pest_btn" href="#">Add to cart</a>
+                                    <a class="pest_btn" href="{{route('home.addtocart',['prodId'=>$item->id])}}">Thêm vào giỏ hàng</a>
                                 </div>
                             </div>
                         </div>
@@ -420,6 +422,7 @@
                     </div>
                 </div>
             </section>
+            
             <!--================End New Arivals Area =================-->
 
 
