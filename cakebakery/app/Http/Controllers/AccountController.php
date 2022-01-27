@@ -73,14 +73,14 @@ class AccountController extends Controller
             $request->hinhanh->storeAs('admin/images', $newImg);
             $recentImg = $newImg;
         }
-        $recentPassword=Account::find($request->id)->password;
-        $recentUsername=Account::find($request->id)->username;
+        $recentPassword = Account::find($request->id)->password;
+        $recentUsername = Account::find($request->id)->username;
         Account::where('id', $request->id)->update(
             [
                 'id' => $request->id,
                 'tenkh' => $request->tenkh,
                 'username' => $recentUsername,
-                'hinhanh'=>  $recentImg,
+                'hinhanh' => ($recentImg == null) ? $request->oldImg : $request->hinhanh,
                 'password' => $recentPassword,
                 'diachi' => $request->diachi,
                 'email' => $request->email,

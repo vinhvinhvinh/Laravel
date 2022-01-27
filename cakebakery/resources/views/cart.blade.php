@@ -5,7 +5,7 @@
 	@parent
 @endsection
 @section('content')
-
+		
         <!--================Cart Table Area =================-->
         <section class="cart_table_area p_100">
         	<div class="container">
@@ -18,40 +18,30 @@
 								<th scope="col">Price</th>
 								<th scope="col">Quantity</th>
 								<th scope="col">Total</th>
-								<th scope="col"></th>
+								<th scope="col"><a href="{{route('home.cart.deleteAll')}}">Xóa giỏ hàng</a></th>
 							</tr>
 						</thead>
 						<tbody>
+							
+							@if($cart!=null)
+							@foreach($cart as $item)
 							<tr>
 								<td>
-									<img src="{{asset('img/product/cart-img.jpg')}}" alt="">
+									<img width=100 height=100 src="{{asset('img/cake-feature/'.$item['img'])}}" alt="">
 								</td>
-								<td>Wheel Axel</td>
-								<td>$25.00</td>
+								<td>{{$item['name']}}</td>
+								<td>{{$item['price']}}</td>
 								<td>
-										<option data-display="1">1</option>
+										<option data-display="1">{{$item['quantity']}}</option>
 
 								</td>
-								<td>$25.00</td>
-								<td>X</td>
+								<td>{{$item['price']*$item['quantity']}}</td>
+								<td><a href="{{route('home.cart.delete',['prodId'=>$item['id']])}}">X</a></td>
 							</tr>
-							<tr>
-								<td>
-									<form class="form-inline">
-										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Coupon code">
-										</div>
-										<button type="submit" class="btn">Apply Coupon</button>
-									</form>
-								</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>
-									<a class="pest_btn" href="#">Add To Cart</a>
-								</td>
-							</tr>
+							@endforeach
+							@else
+								<h2 style="text-align:center">Giỏ hàng trống</h2>
+							@endif
 						</tbody>
 					</table>
 				</div>
@@ -63,13 +53,13 @@
         						Cart Total
         					</div>
         					<div class="sub_total">
-        						<h5>Sub Total <span>$25.00</span></h5>
+        						<h5>Phụ thu <span>0 VND</span></h5>
         					</div>
         					<div class="total">
-        						<h4>Total <span>$25.00</span></h4>
+        						<h4>Tổng <span>{{$totalCart}} VND</span></h4>
         					</div>
         					<div class="cart_footer">
-        						<a class="pest_btn" href="#">Proceed to Checkout</a>
+        						<a class="pest_btn" href="{{route('home.cart.pay')}}">Thanh Toán</a>
         					</div>
         				</div>
         			</div>

@@ -8,6 +8,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MenuDetailController;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,17 +25,15 @@ use App\Http\Controllers\AuthenticationController;
 // 	return view('welcome');
 // });
 
-Route::get('/index', [ProductController::class,'home']) ->name('index');
-Route::get('/product/{id}', [ProductController::class,'productDetail']) ->name('productDetail');
+Route::get('/index', [ProductController::class, 'home'])->name('index');
+Route::get('/product/{id}', [ProductController::class, 'productDetail'])->name('productDetail');
 Route::get('search', function () {
 	return view('search');
 });
 Route::get('products', function () {
 	return view('listproduct');
 });
-Route::get('cart', function () {
-	return view('cart');
-});
+
 Route::get('checkout', function () {
 	return view('checkout');
 });
@@ -61,7 +60,23 @@ Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout
 Route::get('/signup', [AuthenticationController::class, 'signupForm'])->name('signup');
 Route::post('/signup', [AuthenticationController::class, 'signup'])->name('auth.signup');
 Route::get('/dashboard', [ProductController::class, 'dashboard'])->name('admin.dashboard');
+#######################------------USER
+
+
+######################-------------CART
+
+
+
+
 ####################### ----- Đăng nhập/ Đăng xuất
+
+Route::group(['prefix' => 'cart', 'middleware' => ['auth']], function () {
+	Route::get('/', [CartController::class, 'cart'])->name('home.cart');
+	Route::get('/addToCart/{prodId}', [CartController::class, 'addToCart'])->name('home.addtocart');
+	Route::get('/delete/{prodId}', [CartController::class, 'delete'])->name('home.cart.delete');
+	Route::get('/deleteAll', [CartController::class, 'deleteAll'])->name('home.cart.deleteAll');
+	Route::get('/pay', [CartController::class, 'pay'])->name('home.cart.pay');
+});
 
 Route::group(['prefix' => 'product', 'middleware' => ['auth']], function () {
 	Route::get('/', [ProductController::class, 'product'])->name('admin.products.index');

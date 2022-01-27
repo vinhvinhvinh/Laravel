@@ -9,10 +9,10 @@
         <div class="menu-sidebar2__content js-scrollbar1">
             <div class="account2">
                 <div class="image img-cir img-120">
-                    <img src="{{asset('admin/images/'.Session::get('imgOfUser'))}}" alt="B.Tuyền" />
+                    <img src="{{asset('admin/images/'.Session::get('userAvatar'))}}" alt="B.Tuyền" />
                 </div>
                 {{-- <h4 class="name">{{$nameOfUser}}</h4> --}}
-                <h4 class="name">{{Session::get('nameOfUser');}}</h4>
+                <h4 class="name">{{Session::get('userFullname');}}</h4>
 
                 <a href="{{route('logout')}}">Sign out</a>
             </div>

@@ -15,6 +15,8 @@
                                             <div class="form-group">
                                                 <label>Id</label>
                                                 <input disabled name="id" type="text" class="form-control" value="{{$account->id}}">
+                                                <input name="id" type="hidden" class="form-control" value="{{$account->id}}">
+
                                             </div>
                                             <div class="form-group">
                                                 <label>Tên KH</label>
@@ -34,6 +36,8 @@
                                             <div class="form-group">
                                                 <label >Ảnh</label>
                                                 <input  name="hinhanh" type="file" class="form-control">
+                                                <input  name="oldImg" type="hidden" class="form-control" value="{{$account->hinhanh}}">
+
                                                 <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true">Ảnh cũ: {{$account->hinhanh}}"</span>
                                             </div>
                                             <div class="form-group">
