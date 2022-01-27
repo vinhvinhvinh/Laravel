@@ -88,33 +88,14 @@ class AccountController extends Controller
         $account->save();
 
         return redirect()->route('admin.accounts.index');
-        // if ($request->hasFile('hinhanh')) {
-        //     $newImg = $request->file('hinhanh')->getClientOriginalName();
-        //     $request->hinhanh->storeAs('admin/images', $newImg);
-        //     $recentImg = $newImg;
-        // }
-        // $recentPassword=Account::find($request->id)->password;
-        // $recentUsername=Account::find($request->id)->username;
-        // Account::where('id', $request->id)->update(
-        //     [
-        //         'id' => $request->id,
-        //         'tenkh' => $request->tenkh,
-        //         'username' => $recentUsername,
-        //         'hinhanh'=>  $recentImg,
-        //         'password' => $recentPassword,
-        //         'diachi' => $request->diachi,
-        //         'email' => $request->email,
-        //         'loaitk' => $request->loaitk,
-        //         'trangthai' => $request->trangthai,
-        //     ]
-        // );
+
 
     }
 
   public function profile(Request $request)
   {
     $account = Account::find(Auth::user()->id);
-    $invs=Invoice::where('matk','=',Auth::user()->id)->take(5)->get();
+    $invs=Invoice::where('matk','=',Auth::user()->id)->get();
     return view('profile', compact('account','invs'));
 
   }

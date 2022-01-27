@@ -13,7 +13,7 @@ class MenuController extends Controller
 
     public function menu()
     {
-        $menu = Menu::all();
+        $menu =  Menu::orderBy('id', 'DESC')->get();;
         $menuCount = Menu::all()->count();
         //dd($menu);
         return view('admin.menus.menu', compact('menu', 'menuCount'));

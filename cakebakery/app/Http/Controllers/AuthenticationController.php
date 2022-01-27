@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Account;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -23,14 +24,18 @@ class AuthenticationController extends Controller
 
             #chỗ này của user
             $user = Auth::user();
-            $nameOfUser = $user->tenkh;
-            $imgOfUser = $user->hinhanh;
+            //Session data
+            session(['userAvatar' => $user->hinhanh]);
+            session(['userFullname' => $user->tenkh]);
+            session(['userId' => $user->id]);
+
+
 
 
             if ($user->loaitk == -1) {
-                return redirect()->route('admin.dashboard')->with('nameOfUser', $nameOfUser)->with('imgOfUser', $imgOfUser);
+                return redirect()->route('admin.dashboard');
             } else {
-                return redirect()->route('index')->with('nameOfUser', $nameOfUser)->with('imgOfUser', $imgOfUser);
+                return redirect()->route('index');
             }
         }
     }

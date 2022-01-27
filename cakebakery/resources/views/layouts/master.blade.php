@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,6 +31,20 @@
 
         <link href="{{asset('css/style.css')}}" rel="stylesheet">
         <link href="{{asset('css/responsive.css')}}" rel="stylesheet">
+		<style>
+			.logoutt{
+				color: #ffffff;
+			}
+			.logoutt-dropdown{
+				color: #fff;
+				text-align: center;
+				background-color:cadetblue;
+				padding:0px 20px 0px 20px;
+				border-radius:10px;
+				display: none;
+				cursor: pointer;
+			}
+		</style>
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -57,6 +73,8 @@
 						<ul class="h_search list_style">
 							<li class="shop_cart"><a href="#"><i class="lnr lnr-cart"></i></a></li>
 							<li><a class="popup-with-zoom-anim" href="#test-search"><i class="fa fa-search"></i></a></li>
+							<li class="logoutt"><h6 class="name"><a href="{{route('profile')}}">{{Session::get('userFullname');}}</a></h6></li>
+							<li class="logoutt-dropdown"><a href="{{route('logout')}}">Đăng xuất</a></li>
 						</ul>
 					</div>
 				</div>
@@ -75,35 +93,13 @@
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav justify-content-end">
 								<li class="dropdown submenu active">
-									<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+									<a class="dropdown-toggle"  href="{{route('index')}}" >Home</a>
 								</li>
-								<li><a href="cake.html">Our Cakes</a></li>
-								<li><a href="menu.html">Menu</a></li>
+
+
+
 								<li class="dropdown submenu">
-									<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About Us</a>
-									<ul class="dropdown-menu">
-										<li><a href="about-us.html">About Us</a></li>
-										<li><a href="our-team.html">Our Chefs</a></li>
-										<li><a href="testimonials.html">Testimonials</a></li>
-									</ul>
-								</li>
-								<li class="dropdown submenu">
-									<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
-									<ul class="dropdown-menu">
-										<li><a href="service.html">Services</a></li>
-										<li class="dropdown submenu">
-											<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Gallery</a>
-											<ul class="dropdown-menu">
-												<li><a href="portfolio.html">-  Gallery Classic</a></li>
-												<li><a href="portfolio-full-width.html">-  Gallery Full width</a></li>
-											</ul>
-										</li>
-										<li><a href="faq.html">Faq</a></li>
-										<li><a href="what-we-make.html">What we make</a></li>
-										<li><a href="special.html">Special Recipe</a></li>
-										<li><a href="404.html">404 page</a></li>
-										<li><a href="comming-soon.html">Coming Soon page</a></li>
-									</ul>
+									<a class="dropdown-toggle"  href="{{route('home.cart')}}" role="button">Giỏ Hàng</a>
 								</li>
 								<li class="dropdown submenu">
 									<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
@@ -132,7 +128,7 @@
         <!--================End Main Header Area =================-->
 
         @yield('content')
-
+		@include('sweetalert::alert')
         <!--================Newsletter Area =================-->
         <section class="newsletter_area gray_bg">
         	<div class="container">
@@ -272,6 +268,8 @@
         <script src="{{asset('vendors/lightbox/simpleLightbox.min.js')}}"></script>
 
         <script src="{{asset('js/theme.js')}}"></script>
+        <script src="{{asset('alert.js')}}"></script>
+
     </body>
 
 </html>
