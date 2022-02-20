@@ -84,7 +84,7 @@ Route::group(['prefix' => 'product', 'middleware' => ['auth']], function () {
 
 Route::group(['prefix' => 'invoice', 'middleware' => ['auth']], function () {
 	Route::get('/', [InvoiceController::class, 'invoice'])->name('admin.invoices.index');
-    Route::get('/duyethoadon', [InvoiceController::class, 'invoice'])->name('admin.invoices.duyethoadon');
+    Route::get('/duyetHD/{id}', [InvoiceController::class, 'duyetHD'])->name('duyetHD');
 	Route::get('/create', [InvoiceController::class, 'create'])->name('admin.invoices.create');
 	Route::post('/create', [InvoiceController::class, 'addInvoice'])->name('admin.invoices.addInvoice');
 	Route::post('/store', [InvoiceController::class, 'store'])->name('admin.invoices.store');

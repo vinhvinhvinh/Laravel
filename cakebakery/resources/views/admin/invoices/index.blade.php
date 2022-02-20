@@ -25,6 +25,7 @@
                                     <th>Ngày lập</th>
                                     <th class="text-right">Nhân viên lập</th>
                                     <th class="text-right">Tổng tiền</th>
+                                    <th class="text-right">Trạng thái</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -37,6 +38,14 @@
                                     <td>{{$value->ngaylaphd}}</td>
                                     <td class="text-right">{{$value->nvlap}}</td>
                                     <td class="text-right">{{$value->tongtien}}</td>
+                                    @if ($value->trangthai==1)
+                                    <td class="text-right" style="color: greenyellow">Đã duyệt</td>
+
+                                    @else
+                                    <td class="text-right" style="color: red">Chưa duyệt</td>
+                                    @endif
+
+                                    @if ($value->trangthai==1)
                                     <td >
                                         <div class="table-data-feature">
                                             <a style="display:contents" href="{{route('admin.invoices.detail',['id'=>$value->id])}}">
@@ -44,13 +53,25 @@
                                                 <i class="fas fa-pencil-alt"></i>
                                             </button>
                                             </a>
-                                            <a style="display:contents" href="{{route('admin.invoices.delete',['id'=>$value->id])}}">
-                                            <button class="item" data-toggle="tooltip"  data-placement="top" title="Approve">
+                                           </div>
+                                    </td>
+                                    @else
+                                    <td >
+                                        <div class="table-data-feature">
+                                            <a style="display:contents" href="{{route('admin.invoices.detail',['id'=>$value->id])}}">
+                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Xem chi tiết">
+                                                <i class="fas fa-pencil-alt"></i>
+                                            </button>
+                                            </a>
+                                            <a style="display:contents" href="{{route('duyetHD',['id'=>$value->id])}}">
+                                            <button class="item" data-toggle="tooltip"  data-placement="top" title="Duyệt">
                                                 <i class="fa fa-check-square"></i>
                                             </button></a>
 
                                         </div>
                                     </td>
+                                    @endif
+
                                 </tr>
                                 @endforeach
                             </tbody>

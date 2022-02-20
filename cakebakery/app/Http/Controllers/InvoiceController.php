@@ -17,14 +17,14 @@ class InvoiceController extends Controller
 
         return view('admin.invoices.index', compact('invoice', 'invoiceCount'));
     }
-    public function duyetHoaDon()
-    {
-        $invoice = Invoice::where('trangthai',0)->get();
-        // $invoice = Invoice::where();
-        $invoiceCount = $invoice->count();
+    // public function duyetHoaDon()
+    // {
+    //     $invoice = Invoice::where('trangthai',0)->get();
+    //     // $invoice = Invoice::where();
+    //     $invoiceCount = $invoice->count();
 
-        return view('admin.invoices.duyethoadon', compact('invoice', 'invoiceCount'));
-    }
+    //     return view('admin.invoices.duyethoadon', compact('invoice', 'invoiceCount'));
+    // }
     public function delete($id)
     {
         $invoice = Invoice::find($id)->delete();
@@ -94,5 +94,11 @@ class InvoiceController extends Controller
         $invDetails = DB::table('invoice_details')->join('products', 'invoice_details.mabanh', '=', 'products.id')->select('products.tenbanh', 'invoice_details.*')->where('mahd', $mahd)->get();
 
         return view('admin.invoices.invoicedetail', compact('invDetails', 'hoaDon'));
+    }
+    public function duyetHD($id){
+        $invoice = Invoice::find($id);
+        $invoice->trangthai=1;
+        $invoice->save();
+        return redirect()->back();
     }
 }
