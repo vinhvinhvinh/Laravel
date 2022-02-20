@@ -19,6 +19,7 @@ class CreateInvoicesTable extends Migration
             $table->date('ngaylaphd');
             $table->string('nvlap');
             $table->integer('tongtien');
+            $table->integer('trangthai');
             $table->timestamps();
         });
     }

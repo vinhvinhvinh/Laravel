@@ -135,4 +135,15 @@ class AccountController extends Controller
 
   }
 
+  public function voHieuHoa($id){
+    $account = Account::find($id);
+    if($account->trangthai==1){
+        $account->trangthai=0;
+    }
+    else{
+        $account->trangthai=1;
+    }
+    $account->save();
+    return redirect()->back();
+  }
 }

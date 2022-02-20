@@ -12,11 +12,19 @@ class InvoiceController extends Controller
     public function invoice()
     {
         $invoice = Invoice::all();
+        // $invoice = Invoice::where();
         $invoiceCount = Invoice::all()->count();
 
         return view('admin.invoices.index', compact('invoice', 'invoiceCount'));
     }
+    public function duyetHoaDon()
+    {
+        $invoice = Invoice::where('trangthai',0)->get();
+        // $invoice = Invoice::where();
+        $invoiceCount = $invoice->count();
 
+        return view('admin.invoices.duyethoadon', compact('invoice', 'invoiceCount'));
+    }
     public function delete($id)
     {
         $invoice = Invoice::find($id)->delete();
@@ -51,6 +59,7 @@ class InvoiceController extends Controller
         $invoice->ngaylaphd = $request->ngaylaphd;
         $invoice->nvlap = $request->nvlap;
         $invoice->tongtien = $request->tongtien;
+        $invoice->trangthai=0;
         $invoice->save();
         return redirect()->route('admin.invoices.index');
     }

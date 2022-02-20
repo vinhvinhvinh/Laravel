@@ -51,13 +51,22 @@
                                             </div>
                                             <div class="form-group">
                                                 <label >Loại Tài khoản</label>
-                                                <input  name="loaitk" type="text" class="form-control">
-                                                <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
+                                                <select name="loaitk">
+                                                    <option value="">--Chọn--</option>
+                                                    <option value="-1" selected="selected">Admin</option>
+                                                    <option value="0">Nhân viên</option>
+                                                    <option value="1">Khách hàng</option>
+                                                </select>
                                             </div>
                                             <div class="form-group">
-                                                <label >Trạng thái</label>
+                                                {{-- <label >Trạng thái</label>
                                                 <input  name="trangthai" type="text" class="form-control">
-                                                <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
+                                                <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span> --}}
+                                                <select name="trangthai">
+                                                    <option value="">--Chọn--</option>
+                                                    <option value="1" selected="selected">Hoạt động</option>
+                                                    <option value="0">Chưa hoạt động</option>
+                                                </select>
                                             </div>
                                             <div>
                                                 <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
