@@ -19,7 +19,7 @@
                                             </div>
                                             <div class="form-group">
 
-                                                <label>Tên KH</label>
+                                                <label>Họ và tên</label>
                                                 <input  name="tenkh" type="text" class="form-control cc-name valid" >
                                                 <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
                                             </div>

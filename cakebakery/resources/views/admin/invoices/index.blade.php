@@ -36,7 +36,13 @@
                                     <td><span>{{$value->id}}</span></td>
                                     <td>{{$value->matk}}</td>
                                     <td>{{$value->ngaylaphd}}</td>
+                                    @if ($value->trangthai==1)
                                     <td class="text-right">{{$value->nvlap}}</td>
+
+                                    @else
+                                    <td class="text-right"> </td>
+                                    @endif
+
                                     <td class="text-right">{{$value->tongtien}}</td>
                                     @if ($value->trangthai==1)
                                     <td class="text-right" style="color: greenyellow">Đã duyệt</td>

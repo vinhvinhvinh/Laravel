@@ -146,4 +146,10 @@ class AccountController extends Controller
     $account->save();
     return redirect()->back();
   }
+
+  public function employee(){
+    $account = Account::where('loaitk',0)->get();
+    $accountCount=$account->count();
+    return view('admin.employees.index', compact('account','accountCount'));
+  }
 }

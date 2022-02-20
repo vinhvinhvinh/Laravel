@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employee;
+use App\Models\Account;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Menu;
@@ -27,7 +27,7 @@ class MenuController extends Controller
 
     public function create()
     {
-        $employees = Employee::all();
+        $employees = Account::where('loaitk',0)->get();
 
         $datetime = Date('Ymdhms');
         $countAllMenu = Menu::all()->count() + 1;

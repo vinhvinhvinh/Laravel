@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Invoice;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class InvoiceController extends Controller
@@ -98,6 +99,7 @@ class InvoiceController extends Controller
     public function duyetHD($id){
         $invoice = Invoice::find($id);
         $invoice->trangthai=1;
+        $invoice->nvlap=Auth::user()->id;
         $invoice->save();
         return redirect()->back();
     }
