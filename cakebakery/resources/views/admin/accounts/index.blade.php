@@ -21,14 +21,15 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
+                                    <th class="text-right">Loại TK </th>
                                     <th>Tên TK</th>
                                     <th>Username</th>
-                                    <th class="text-right">Password</th>
                                     <th class="text-right">Ảnh </th>
                                     <th class="text-right">Địa chỉ</th>
                                     <th class="text-right">Email </th>
-                                    <th class="text-right">Loại TK </th>
+
                                     <th class="text-right">Trạng thái</th>
+                                    <th>Thao tác</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -37,14 +38,37 @@
                                 <tr>
 
                                     <td><span>{{$value->id}}</span></td>
+                                    @if($value->loaitk==-1)
+                                        <td class="text-right">Admin</td>
+
+                                    @elseif ($value->loaitk==0)
+
+                                        <td class="text-right">Nhân viên</td>
+
+                                    @else
+                                        <td class="text-right">Khách hàng</td>
+
+                                    @endif
                                     <td>{{$value->tenkh}}</td>
                                     <td>{{$value->username}}</td>
-                                    <td class="text-right">{{$value->password}}</td>
                                     <td class="text-right"><img width=100 height=80 src="{{asset('admin/images/'.$value->hinhanh)}}" alt="{{$value->id}}"></td>
                                     <td class="text-right">{{$value->diachi}}</td>
                                     <td class="text-right">{{$value->email}}</td>
-                                    <td class="text-right">{{$value->loaitk}}</td>
-                                    <td class="text-right">{{$value->trangthai}}</td>
+
+                                    @if($value->trangthai==1)
+                                    <td class="text-right" style="color: greenyellow"> Hoạt động</td>
+
+                                    @else
+                                        <td class="text-right" style="color: red">Bị khóa</td>
+
+                                    @endif
+                                    @if($value->trangthai==1)
+                                    <td><a href="{{route('voHieuHoa',['id'=>$value->id])}}">Vô hiệu hóa</a></td>
+
+                                    @else
+                                    <td><a href="{{route('voHieuHoa',['id'=>$value->id])}}">Kích hoạt</a></td>
+
+                                    @endif
                                     <td>
                                         <div class="table-data-feature">
                                             <a style="display:contents" href="{{route('admin.accounts.edit',['id'=>$value->id])}}">

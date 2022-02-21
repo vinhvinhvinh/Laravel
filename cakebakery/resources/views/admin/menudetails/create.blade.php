@@ -18,26 +18,26 @@
                                                 <input name="mamenu" type="hidden" class="form-control" value="{{$recentMenu}}">
                                                 <h3></h3>
                                             </div>
-                                           
+
                                             <div class="form-group">
                                                 <label>Mã bánh</label>
                                                 {{-- <input name="nvlap" type="text" class="form-control" value={{$idNhanvien}}> --}}
                                                 <select name="mabanh">
                                                     @foreach($products as $p)
-                                                    <option value="{{$p->id}}">{{$p->id}}</option>
+                                                    <option value="{{$p->id}}">{{$p->tenbanh}}</option>
                                                     @endforeach
                                                 </select>
                                                 <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
                                             </div>
                                             <div class="form-group">
                                                 <label>Số lượng</label>
-                                                <input name="soluong" type="text" class="form-control" value="">
+                                                <input name="soluong" type="number" class="form-control" value="">
                                                 <h3></h3>
                                             </div>
-                                            
+
                                             <div>
                                                 <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
-                                                    
+
                                                     <span id="payment-button-amount">Thêm</span>
                                                     <span id="payment-button-sending" style="display:none;">Sending…</span>
                                                 </button>

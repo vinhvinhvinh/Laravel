@@ -31,7 +31,7 @@ class ForeignKey extends Migration
         //Khóa ngoại của menu và employee
         //nvlap trong menu là khóa ngoại
         Schema::table('menus', function (Blueprint $table) {
-            $table->foreign('nvlap')->references('id')->on('employees');
+            $table->foreign('nvlap')->references('id')->on('accounts');
         });
 
         //Khóa ngoại của invoice_detail và product
@@ -46,7 +46,7 @@ class ForeignKey extends Migration
         //Khóa ngoại của invoice và employee
         //nvlap trong invoice là khóa ngoại
         Schema::table('invoices', function (Blueprint $table) {
-            $table->foreign('nvlap')->references('id')->on('employees');
+            $table->foreign('nvlap')->references('id')->on('accounts');
         });
     }
 

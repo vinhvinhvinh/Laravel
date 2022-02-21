@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employee;
+use App\Models\Account;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Menu;
@@ -27,7 +27,7 @@ class MenuController extends Controller
 
     public function create()
     {
-        $employees = Employee::all();
+        $employees = Account::where('loaitk',0)->get();
 
         $datetime = Date('Ymdhms');
         $countAllMenu = Menu::all()->count() + 1;
@@ -51,7 +51,7 @@ class MenuController extends Controller
         $menu = new Menu();
         $menu->id = $request->id;
         $menu->ngaylap = $request->ngaylap;
-        $menu->nvlap = $request->nvlap;
+        $menu->nvlap = Auth::user()->id;
         $menu->trangthai = 1;
         $menu->save();
         return redirect()->route('admin.menus.index');

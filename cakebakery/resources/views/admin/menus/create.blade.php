@@ -22,21 +22,11 @@
                                                 <input  name="ngaylap" type="date" class="form-control cc-name valid" >
                                                 <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
                                             </div>
-                                            <div class="form-group">
-                                                <label>Nhân viên lập</label>
-                                                {{-- <input name="nvlap" type="text" class="form-control" value={{$idNhanvien}}> --}}
-                                                <select name="nvlap">
-                                                    @foreach($employees as $e)
-                                                    <option value="{{$e->id}}">{{$e->id}}</option>
-                                                    @endforeach
-                                                </select>
-                                                <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
-                                            </div>
-                                           
-                                            
+
+
                                             <div>
                                                 <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
-                                                    
+
                                                     <span id="payment-button-amount">Thêm</span>
                                                     <span id="payment-button-sending" style="display:none;">Sending…</span>
                                                 </button>

@@ -81,7 +81,7 @@ class CartController extends Controller
         $cart = Session::get('cart');
 
         //Thêm hóa đơn
-        $employee = 'EMPLOYEE20220103060123002';
+        $employee = 'ACCOUNT20220220110227002';
         $datetime = Date('Ymdhms');
         $countAllInv = Invoice::all()->count() + 1;
         $chuoiID = $countAllInv;

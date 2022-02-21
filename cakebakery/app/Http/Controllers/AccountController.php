@@ -135,4 +135,21 @@ class AccountController extends Controller
 
   }
 
+  public function voHieuHoa($id){
+    $account = Account::find($id);
+    if($account->trangthai==1){
+        $account->trangthai=0;
+    }
+    else{
+        $account->trangthai=1;
+    }
+    $account->save();
+    return redirect()->back();
+  }
+
+  public function employee(){
+    $account = Account::where('loaitk',0)->get();
+    $accountCount=$account->count();
+    return view('admin.employees.index', compact('account','accountCount'));
+  }
 }

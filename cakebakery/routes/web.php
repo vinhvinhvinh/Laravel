@@ -84,6 +84,8 @@ Route::group(['prefix' => 'product', 'middleware' => ['auth']], function () {
 
 Route::group(['prefix' => 'invoice', 'middleware' => ['auth']], function () {
 	Route::get('/', [InvoiceController::class, 'invoice'])->name('admin.invoices.index');
+
+    Route::get('/duyetHD/{id}', [InvoiceController::class, 'duyetHD'])->name('duyetHD');
 	Route::get('/create', [InvoiceController::class, 'create'])->name('admin.invoices.create');
 	Route::post('/create', [InvoiceController::class, 'addInvoice'])->name('admin.invoices.addInvoice');
 	Route::post('/store', [InvoiceController::class, 'store'])->name('admin.invoices.store');
@@ -103,6 +105,7 @@ Route::group(['prefix' => 'employee', 'middleware' => ['auth']], function () {
 });
 Route::group(['prefix' => 'account', 'middleware' => ['auth']], function () {
 	Route::get('/', [AccountController::class, 'account'])->name('admin.accounts.index');
+    Route::get('/employee', [AccountController::class, 'employee'])->name('admin.employees.index');
 	Route::get('/create', [AccountController::class, 'create'])->name('admin.accounts.create');
 	Route::post('/create', [AccountController::class, 'addAccount'])->name('admin.accounts.addAccount');
 	Route::post('/store', [AccountController::class, 'store'])->name('admin.accounts.store');
@@ -114,6 +117,7 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth']], function () {
     Route::get('/profileAdmin', [AccountController::class, 'profileAdmin'])->name('profileAdmin');
 	Route::post('/updateProfileAdmin', [AccountController::class, 'updateProfile'])->name('updateProfileAdmin');
     Route::get('/invoices/{mahd}', [AccountController::class, 'chiTietDonHang'])->name('detailinvoices');
+    Route::get('/vohieuhoa/{id}', [AccountController::class, 'voHieuHoa'])->name('voHieuHoa');
 });
 
 Route::group(['prefix' => 'menu', 'middleware' => ['auth']], function () {

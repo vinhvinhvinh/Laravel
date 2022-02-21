@@ -28,13 +28,18 @@ class AuthenticationController extends Controller
             session(['userAvatar' => $user->hinhanh]);
             session(['userFullname' => $user->tenkh]);
             session(['userId' => $user->id]);
+            session(['loaitk'=>$user->loaitk]);
 
 
 
 
             if ($user->loaitk == -1) {
                 return redirect()->route('admin.dashboard');
-            } else {
+            }
+            else if ($user->loaitk == 0) {
+                return redirect()->route('admin.invoices.index');
+            }
+            else {
                 return redirect()->route('index');
             }
         }
