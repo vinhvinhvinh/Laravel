@@ -51,7 +51,7 @@ class MenuController extends Controller
         $menu = new Menu();
         $menu->id = $request->id;
         $menu->ngaylap = $request->ngaylap;
-        $menu->nvlap = $request->nvlap;
+        $menu->nvlap = Auth::user()->id;
         $menu->trangthai = 1;
         $menu->save();
         return redirect()->route('admin.menus.index');

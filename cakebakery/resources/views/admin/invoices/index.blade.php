@@ -34,7 +34,7 @@
                                 <tr>
 
                                     <td><span>{{$value->id}}</span></td>
-                                    <td>{{$value->matk}}</td>
+                                    <td>{{$value->tenkh}}</td>
                                     <td>{{$value->ngaylaphd}}</td>
                                     @if ($value->trangthai==1)
                                     <td class="text-right">{{$value->nvlap}}</td>
@@ -44,13 +44,12 @@
                                     @endif
 
                                     <td class="text-right">{{$value->tongtien}}</td>
-                                    @if ($value->trangthai==1)
-                                    <td class="text-right" style="color: greenyellow">Đã duyệt</td>
+                                    @if ($value->trangthai==0)
+                                    <td class="text-right" style="color: red">Chưa duyệt</td>
 
                                     @else
-                                    <td class="text-right" style="color: red">Chưa duyệt</td>
+                                    <td class="text-right" style="color: greenyellow">Đã duyệt</td>
                                     @endif
-
                                     @if ($value->trangthai==1)
                                     <td >
                                         <div class="table-data-feature">
